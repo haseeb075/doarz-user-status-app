@@ -3,11 +3,20 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Provider } from 'react-redux';
+import store from './redux/store'; //Redux store
+import { UserProvider } from './context/UserContext'; // UserContext
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}> {/* Wrap App with Provider and pass the store */}
+      <UserProvider> {/* Wrap App with UserProvider if using UserContext */}
+        <App />
+      </UserProvider>
+    </Provider>
   </React.StrictMode>
 );
 
